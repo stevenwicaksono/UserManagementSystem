@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #333;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .actions a {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .actions a:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f1f1f1;
+        }
+
+        a.edit {
+            color: #28a745;
+            text-decoration: none;
+        }
+
+        a.delete {
+            color: #dc3545;
+            text-decoration: none;
+        }
+
+        a.edit:hover, a.delete:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Data Users</h2>
+
+        <div class="actions">
+            <a href="/user/create">+ Tambah User</a>
+            <a href="/logout">Logout</a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        <a href="/user/edit/{{ user.id }}" class="edit">Edit</a> |
+                        <a href="/user/delete/{{ user.id }}" class="delete" onclick="return confirm('Hapus user?')">Hapus</a>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="3">Belum ada data user.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

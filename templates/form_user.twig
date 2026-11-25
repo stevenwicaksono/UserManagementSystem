@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user is defined ? 'Edit' : 'Tambah' }} User</title>
+    <style>
+        body {
+            background: #f3f6f9;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        small {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .back-link a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>{{ user is defined ? 'Edit' : 'Tambah' }} User</h2>
+
+        <form method="post" action="{{ action }}">
+            <label for="username">Email:</label>
+            <input type="text" id="username" name="username" value="{{ user.username ?? '' }}" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <small>{{ user is defined ? '(Kosongkan jika tidak ingin mengubah password)' : '' }}</small>
+
+            <button type="submit">Simpan</button>
+        </form>
+
+        <div class="back-link">
+            <a href="/dashboard">← Kembali ke Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

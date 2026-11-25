@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        body {
+            background: #f9f9f9;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 1.5rem;
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 0.7rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #28a745;
+            outline: none;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .login-link {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #28a745;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h1>Register</h1>
+
+        <form method="post" action="/register">
+            <label for="username">Email:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div class="login-link">
+            <p>Sudah punya akun? <a href="/login">Login di sini</a></p>
+        </div>
+    </div>
+</body>
+</html>
